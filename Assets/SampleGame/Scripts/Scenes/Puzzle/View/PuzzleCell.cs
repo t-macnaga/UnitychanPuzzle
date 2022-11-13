@@ -26,6 +26,7 @@ public class PuzzleCell : MonoBehaviour
     [SerializeField] TransformGesture transformGesture;
     [SerializeField] RawImage image;
     [SerializeField] Parameter[] parameters;
+    [SerializeField] Slider hpSlider;
 
     public float longPressTime = 2F;
     public float swipeRecognizeLength = 1F;
@@ -33,6 +34,7 @@ public class PuzzleCell : MonoBehaviour
     public bool isStarted;
     public Vector3 move;
     public SwipeDirection swipeDirection;
+    PuzzleUnitModel unitModel;
     public int Index { get; set; }
 
     void OnEnable()
@@ -63,9 +65,13 @@ public class PuzzleCell : MonoBehaviour
     //     }
     // }
 
-    public void Setup(int index, PuzzleCellType cellType, PuzzleUnitType unitType)
+    public void Setup(int index, PuzzleCellType cellType, PuzzleUnitType unitType, PuzzleUnitModel unitModel)
     {
         this.Index = index;
+        this.unitModel = unitModel;
+        hpSlider.gameObject.SetActive(cellType == PuzzleCellType.EnemyCell);
+        hpSlider.value = 1F;
+
         var parameter = parameters.FirstOrDefault(x => x.unitType == unitType && x.cellType == cellType);
         if (parameter != null)
         {
@@ -77,6 +83,12 @@ public class PuzzleCell : MonoBehaviour
     public void SetIndex(int index)
     {
         this.Index = index;
+    }
+
+    public void PlayDamage()
+    {
+        var toValue = (float)unitModel.hp / unitModel.maxHp;
+        hpSlider.DOValue(toValue, 0.3F);
     }
 
     public void PlayRemove()

@@ -26,6 +26,7 @@ public class FakeQuestListResponse
                     new PuzzleUnitModel
                     {
                         hp = 3,
+                        maxHp = 3,
                         maxTurn = 3,
                         turn = 3,
                         initialIndex = 22,
@@ -34,35 +35,39 @@ public class FakeQuestListResponse
                     new PuzzleUnitModel
                     {
                         hp = 3,
+                        maxHp = 3,
                         maxTurn = 3,
                         turn = 3,
                         initialIndex = 27,
                         unitType = PuzzleUnitType.TypeA
                     },
-                    new PuzzleUnitModel
-                    {
-                        hp = 3,
-                        maxTurn = 3,
-                        turn = 3,
-                        initialIndex = 62,
-                        unitType = PuzzleUnitType.TypeA
-                    },
-                    new PuzzleUnitModel
-                    {
-                        hp = 3,
-                        maxTurn = 3,
-                        turn = 3,
-                        initialIndex = 67,
-                        unitType = PuzzleUnitType.TypeA
-                    },
-                    new PuzzleUnitModel
-                    {
-                        hp = 3,
-                        maxTurn = 3,
-                        turn = 3,
-                        initialIndex = 85,
-                        unitType = PuzzleUnitType.TypeA
-                    },
+                    // new PuzzleUnitModel
+                    // {
+                    //     hp = 3,
+                    //     maxHp = 3,
+                    //     maxTurn = 3,
+                    //     turn = 3,
+                    //     initialIndex = 62,
+                    //     unitType = PuzzleUnitType.TypeA
+                    // },
+                    // new PuzzleUnitModel
+                    // {
+                    //     hp = 3,
+                    //     maxHp = 3,
+                    //     maxTurn = 3,
+                    //     turn = 3,
+                    //     initialIndex = 67,
+                    //     unitType = PuzzleUnitType.TypeA
+                    // },
+                    // new PuzzleUnitModel
+                    // {
+                    //     hp = 3,
+                    //     maxHp = 3,
+                    //     maxTurn = 3,
+                    //     turn = 3,
+                    //     initialIndex = 85,
+                    //     unitType = PuzzleUnitType.TypeA
+                    // },
             }},
     };
 }

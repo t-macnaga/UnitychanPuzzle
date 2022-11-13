@@ -1,13 +1,18 @@
 using System.Collections.Generic;
 using TouchScript.Utils;
 
+public class PuzzleLogResult
+{
+    public List<PuzzleLogData> logList = new List<PuzzleLogData>();
+}
+
 public class PuzzleLogic
 {
     RemoveCellsLogic removeCellsLogic = new RemoveCellsLogic();
     StepDownCellsLogic stepDownCellsLogic = new StepDownCellsLogic();
     GenerateCellsLogic generateCellsLogic = new GenerateCellsLogic();
     SwapCellsLogic swapCellsLogic = new SwapCellsLogic();
-    List<PuzzleLogData> resultLogList = new List<PuzzleLogData>();
+    PuzzleLogResult result = new PuzzleLogResult();
     ObjectPool<PuzzleLogData> logDataPool;
     ObjectPool<LogTargetCell> logTargetPool;
 
@@ -17,20 +22,20 @@ public class PuzzleLogic
         logTargetPool = new ObjectPool<LogTargetCell>(1, () => new LogTargetCell(), null, (log) => log.Clear());
     }
 
-    public IReadOnlyList<PuzzleLogData> Log(PuzzleContext context)
+    public PuzzleLogResult Log(PuzzleContext context)
     {
-        resultLogList.Clear();
-        removeCellsLogic.Log(context, ref resultLogList);
-        stepDownCellsLogic.Log(context, ref resultLogList);
-        generateCellsLogic.Log(context, ref resultLogList);
-        return resultLogList;
+        result.logList.Clear();
+        removeCellsLogic.Log(context, ref result.logList);
+        stepDownCellsLogic.Log(context, ref result.logList);
+        generateCellsLogic.Log(context, ref result.logList);
+        return result;
     }
 
-    public IReadOnlyList<PuzzleLogData> TrySwapLog(PuzzleContext context, int index, SwipeDirection swipeDirection)
+    public PuzzleLogResult TrySwapLog(PuzzleContext context, int index, SwipeDirection swipeDirection)
     {
-        resultLogList.Clear();
-        swapCellsLogic.TrySwap(context, index, swipeDirection, ref resultLogList);
-        return resultLogList;
+        result.logList.Clear();
+        swapCellsLogic.TrySwap(context, index, swipeDirection, ref result.logList);
+        return result;
     }
 
     internal PuzzleLogData CreateLogData() => logDataPool.Get();

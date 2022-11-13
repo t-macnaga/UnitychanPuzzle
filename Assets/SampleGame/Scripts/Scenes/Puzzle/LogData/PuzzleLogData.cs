@@ -6,6 +6,7 @@ public class PuzzleLogData : ILogData
     public int Id => (int)logType;
     public PuzzleLogType logType;
     public List<LogTargetCell> targetCellList = new List<LogTargetCell>();
+    public List<AttackLogData> attackLogList = new List<AttackLogData>();
     public List<(int fromIndex, int toIndex)> stepDownList = new List<(int, int)>();
     public List<PuzzleLogData> children = new List<PuzzleLogData>();
 
@@ -13,6 +14,7 @@ public class PuzzleLogData : ILogData
     {
         logType = default;
         targetCellList.Clear();
+        attackLogList.Clear();
         stepDownList.Clear();
         children.Clear();
     }

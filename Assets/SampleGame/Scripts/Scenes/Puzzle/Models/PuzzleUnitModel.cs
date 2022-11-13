@@ -1,6 +1,7 @@
 public class PuzzleUnitModel
 {
     public int hp;
+    public int maxHp;
     public int turn;
     public int maxTurn;
     public int initialIndex;

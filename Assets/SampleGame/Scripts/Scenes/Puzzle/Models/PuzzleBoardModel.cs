@@ -7,9 +7,11 @@ public class PuzzleBoardModel
     public Vector2Int BoardSize { get; private set; }
     public BoardGridNode[,] cellModelGrid;
     public List<BoardGridNode> cellModelList = new List<BoardGridNode>();
+    public PuzzleQuest Quest { get; }
 
     public PuzzleBoardModel(PuzzleQuest quest, Vector2Int boardSize)
     {
+        Quest = quest;
         BoardSize = boardSize;
         cellModelGrid = new BoardGridNode[(int)boardSize.y, (int)boardSize.x];
         Setup(quest);

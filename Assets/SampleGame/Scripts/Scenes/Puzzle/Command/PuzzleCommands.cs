@@ -1,8 +1,6 @@
 using Lib.Commands;
 using System;
 using UniRx;
-using System.Collections;
-using System.Collections.Generic;
 
 public interface IPuzzleCommand : ICommand<PuzzleContext, PuzzleLogData>
 {
@@ -13,6 +11,7 @@ public class PuzzleCommands
     public CommandExecutionContext<PuzzleContext, PuzzleLogData> ExecutionContext { get; set; }
         = new CommandExecutionContext<PuzzleContext, PuzzleLogData>();
     public bool IsBusy { get; private set; }
+    public bool AnyLog() => ExecutionContext.LogQueue.Count > 0;
 
     public PuzzleCommands()
     {

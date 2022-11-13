@@ -14,7 +14,7 @@ public class PuzzleBoardView : MonoBehaviour
                 cellTemplate, cellTemplate.transform.parent);
             var rect = cell.transform as RectTransform;
             rect.anchoredPosition = new Vector2(model.position.x * 100F, -model.position.y * 100F);
-            cell.Setup(model.index, model.cellType, model.unitType);
+            cell.Setup(model.index, model.cellType, model.unitType, model.unitModel);
             cellList.Add(cell);
         }
         cellTemplate.gameObject.SetActive(false);

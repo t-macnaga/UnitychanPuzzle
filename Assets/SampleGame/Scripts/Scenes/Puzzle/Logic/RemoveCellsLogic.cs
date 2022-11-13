@@ -33,13 +33,15 @@ public class RemoveCellsLogic
             {
                 TargetEnemyIndices = TargetEnemyIndices.Distinct().ToList();
                 var targetEnemies = TargetEnemyIndices.Select(x => (x, boardModel.Get(x).unitModel)).ToList();
+                //TODO: attack point
+                var attackPoint = 1;
                 foreach (var targetEnemy in targetEnemies)
                 {
-                    //TODO: attack point
-                    targetEnemy.unitModel.Damage(1);
+                    targetEnemy.unitModel.Damage(attackPoint);
                 }
                 var logData = context.Logic.CreateLogData();
                 logData.logType = PuzzleLogType.AttackCells;
+                logData.attackLogList.Add(new AttackLogData { attackPoint = attackPoint });
                 foreach (var index in TargetEnemyIndices)
                 {
                     var target = context.Logic.CreateLogTarget(index);

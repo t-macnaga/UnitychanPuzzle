@@ -12,7 +12,7 @@ public class GenerateCellsCommand : IPuzzleCommand
         foreach (var targetCell in log.targetCellList)
         {
             var cell = context.View.GetCell(targetCell.index);
-            cell.Setup(targetCell.index, targetCell.cellType, targetCell.unitType);
+            cell.Setup(targetCell.index, targetCell.cellType, targetCell.unitType, null);
             var rect = cell.transform as RectTransform;
             var pos = rect.anchoredPosition;
             var fromPos = pos;

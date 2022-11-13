@@ -12,6 +12,7 @@ public class AttackCellsCommand : IPuzzleCommand
         {
             var cell = context.View.GetCell(target.index);
             cell.transform.DOPunchPosition(new Vector3(5f, 5f, 0), duration, 5, 1f);
+            cell.PlayDamage();
         }
         yield return WaitForCache.Seconds(duration);
     }

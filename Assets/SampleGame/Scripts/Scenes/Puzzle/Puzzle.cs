@@ -22,7 +22,7 @@ public class Puzzle : SceneBase<PuzzleQuest>
     {
         backButton.OnClickAsObservable().Subscribe(_ =>
         {
-            TransitionController.Instance.LoadScene("Home", TransitionController.LoadingMode.LongLoading);
+            director.BackToHome();
         });
         var quest = Argument as PuzzleQuest;
         SetupDirector(quest);
